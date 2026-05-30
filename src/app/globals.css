@@ -1,4 +1,4 @@
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap');
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -6,44 +6,59 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: 'Satoshi', system-ui, -apple-system, sans-serif;
+
+    /* new keyframe */
+
+/* Typography Configuration */
+  --font-sans: "Satoshi", system-ui, -apple-system, sans-serif;
+
+  /* Color Variable Design System */
+  --color-site-bg-dark: #07050a;
+  --color-card-bg-dark: rgba(15, 12, 22, 0.6);
   --color-brand-primary: #7d2ae8;
   --color-brand-primary-hover: #6b21c9;
   --color-brand-primary-glow: rgba(125, 42, 232, 0.15);
 
-  --color-brand-indigo: #7d2ae8;
-  --color-brand-purple: #10b981;
-  --color-brand-emerald: #7d2ae8;
-
-  --animate-fade-in: fade-in 0.5s ease-out;
-  --animate-slide-up: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-btn-shine: btn-shine 0.7s ease-out;
+  /* Animation Timings Mapping */
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-btn-glow: btn-glow 2.5s ease-in-out infinite;
+  --animate-text-crawl: text-crawl 16s linear infinite;
 
-  --bg-gradient-radial: radial-gradient(var(--tw-gradient-stops));
-
+  /* Custom Animation Keyframes */
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
   }
   @keyframes slide-up {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-  @keyframes btn-shine {
-    0% { transform: translateX(-120%) skewX(-12deg); }
-    100% { transform: translateX(220%) skewX(-12deg); }
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   @keyframes btn-glow {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50% { opacity: 0.65; transform: scale(1.05); }
+    0%, 100% { box-shadow: 0 0 15px rgba(125, 42, 232, 0.2); }
+    50% { box-shadow: 0 0 32px rgba(125, 42, 232, 0.55); }
+  }
+  @keyframes text-crawl {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
   }
 }
 
+/* Custom Text Stroke Utility for kinetic marquee */
+@utility text-stroke-purple {
+  -webkit-text-stroke: 1px #7d2ae8;
+}
+  
+
 :root {
   --border-glow: rgba(125, 42, 232, 0.15);
-  --background: oklch(1 0 0);
+  --background: oklch(95.265% 0.02706 306.927);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -120,14 +135,20 @@
   position: absolute;
   width: 180px;
   height: 200%;
-  background: linear-gradient(to bottom, transparent, rgba(125, 42, 232, 0.04), transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(125, 42, 232, 0.04),
+    transparent
+  );
   transform: rotate(-30deg);
   pointer-events: none;
   filter: blur(80px);
 }
 
 .text-stroke-3d {
-  -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 8%, transparent);
+  -webkit-text-stroke: 1.5px
+    color-mix(in oklch, var(--foreground) 8%, transparent);
   color: transparent;
 }
 
@@ -144,8 +165,8 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 @theme inline {
