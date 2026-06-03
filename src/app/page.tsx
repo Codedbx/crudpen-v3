@@ -2,12 +2,14 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion"; // FIX 1: Added missing motion import
 import { DottedGlowBackground } from "@/components/ui/dotted-glow-background";
 import { AnimatedButton } from "@/components/ui/animated-button";
 import Link from "next/link";
 import TeamSection from "@/components/ui/team-section";
 import Image from "next/image";
 import HeroSection from "@/components/ui/hero-section";
+import Navbar from "@/components/layout/Navbar";
 import {
   Star,
   ArrowUpRight,
@@ -25,25 +27,67 @@ import {
   Database,
 } from "lucide-react";
 
+// FIX 2: Defined the waterBalls array structure so .map() doesn't fail
+// Configured with smaller sizes (ranging from 30px to 80px) and a higher count
+const waterBalls = [
+  { size: 40,  initialX: "12%", initialY: "8%",  duration: 14, delay: 0 },
+  { size: 70,  initialX: "85%", initialY: "12%", duration: 18, delay: 1.5 },
+  { size: 55,  initialX: "35%", initialY: "25%", duration: 16, delay: 0.5 },
+  { size: 30,  initialX: "65%", initialY: "30%", duration: 12, delay: 2 },
+  { size: 80,  initialX: "20%", initialY: "50%", duration: 22, delay: 3 },
+  { size: 45,  initialX: "75%", initialY: "55%", duration: 15, delay: 1 },
+  { size: 60,  initialX: "45%", initialY: "70%", duration: 19, delay: 2.5 },
+  { size: 35,  initialX: "90%", initialY: "78%", duration: 13, delay: 0.2 },
+  { size: 50,  initialX: "15%", initialY: "85%", duration: 17, delay: 4 },
+  { size: 65,  initialX: "60%", initialY: "90%", duration: 20, delay: 1.8 },
+];
+
 export default function Home() {
   return (
     <div className="relative w-full flex flex-col items-center overflow-hidden">
-      {/* Background Luminous Beams (Mockup Diagonal Streaks) */}
-      <div className="diagonal-streak left-[-5%] top-[5%] opacity-70" />
-      <div className="diagonal-streak right-[-5%] top-[25%] opacity-50" />
-      <div className="diagonal-streak left-[-10%] top-[55%] opacity-40" />
-      <div className="diagonal-streak right-[-8%] top-[75%] opacity-60" />
-
-      {/* Background glow effects - Cyan / Teal to match mockup */}
-      <div className="absolute top-[15%] left-[20%] w-[550px] h-[550px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-slow" />
-      <div className="absolute top-[40%] right-[10%] w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[130px] pointer-events-none -z-10" />
-
+      {/* HERO SECTION */}
       {/* HERO SECTION */}
       <section className="w-full relative flex flex-col items-center justify-center z-10">
-        {/*  HERO SECTION*/}
-        <HeroSection />
-
-       
+        <div className="relative min-h-screen w-full overflow-x-hidden">
+          
+          {/* ================= BACKGROUND WATER BALLS ANIMATION LAYER ================= */}
+          <div className="absolute inset-x-0 top-0 h-full pointer-events-none z-0 overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              {waterBalls.map((ball, index) => (
+                <motion.div
+                  key={index}
+                  className="absolute rounded-full mix-blend-screen shadow-[inset_0_4px_12px_rgba(255,255,255,0.3)]" 
+                  style={{
+                    width: ball.size,
+                    height: ball.size,
+                    left: ball.initialX,
+                    top: ball.initialY,
+                  }}
+                  animate={{
+                    x: [0, 45, -35, 25, 0],
+                    y: [0, -70, 45, -45, 0],
+                    scale: [1, 1.2, 0.85, 1.1, 1],
+                    borderRadius: [
+                      "50%",
+                      "40% 60% 70% 30% / 45% 45% 55% 55%",
+                      "65% 35% 50% 50% / 55% 45% 55% 45%",
+                      "50%",
+                    ],
+                  }}
+                  transition={{
+                    duration: ball.duration,
+                    delay: ball.delay,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+            </div>
+            <div className="absolute inset-0 backdrop-blur-[4px] z-[1]" />
+          </div>
+          <HeroSection />
+        </div>
+        
         {/* Dotted Glow Background */}
         <DottedGlowBackground
           className="pointer-events-none z-0"
