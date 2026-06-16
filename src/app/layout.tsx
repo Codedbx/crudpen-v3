@@ -35,12 +35,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={cn("h-full antialiased", "font-sans", geist.variable)}>
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-brand-indigo/30 selection:text-foreground">
+      <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='light')document.documentElement.classList.remove('dark');else document.documentElement.classList.add('dark');}catch(e){document.documentElement.classList.add('dark');}})();`,
           }}
         />
+      </head>
+      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-brand-indigo/30 selection:text-foreground">
         <Navbar />
         <main className="flex-grow pt-24 flex flex-col">
           {children}

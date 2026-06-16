@@ -48,7 +48,7 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const handleQuoteScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleQuoteScroll = (e: React.MouseEvent<HTMLElement>) => {
     const targetHref = "/contact";
     if (
       targetHref.startsWith("#") ||

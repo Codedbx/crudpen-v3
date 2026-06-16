@@ -1,0 +1,168 @@
+.alc-card {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background: var(--alc-bg, #243137);
+  position: relative;
+  display: grid;
+  place-content: center;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.alc-border {
+  position: absolute;
+  inset: 0px;
+  border: 2px solid var(--alc-accent, #bd9f67);
+  opacity: 0;
+  transform: rotate(10deg);
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.alc-bottom-text {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 0px 5px 0px 8px;
+  color: var(--alc-accent, #bd9f67);
+  background: var(--alc-bg, #243137);
+  opacity: 0;
+  letter-spacing: 7px;
+  transition: all 0.5s ease-in-out;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.alc-content {
+  transition: all 0.5s ease-in-out;
+  z-index: 5;
+}
+
+.alc-logo {
+  height: 45px;
+  position: relative;
+  width: 45px;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+}
+
+.alc-logo1 {
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  left: 0;
+  color: var(--alc-accent, #bd9f67);
+}
+
+.alc-logo2 {
+  height: 45px;
+  position: absolute;
+  left: 55px;
+  display: flex;
+  align-items: center;
+  color: var(--alc-text, #0D0D1A);
+  font-size: 24px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: color 0.5s ease-in-out;
+}
+
+.alc-trail {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.alc-logo-bottom-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 45px;
+  color: var(--alc-accent, #bd9f67);
+  padding-left: 8px;
+  font-size: 12px;
+  opacity: 0;
+  letter-spacing: normal;
+  transition: all 0.5s ease-in-out 0.5s;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.alc-card:hover {
+  border-radius: 12px;
+  transform: scale(1.02);
+  background: var(--alc-bg-hover, rgba(13, 13, 26, 0.8));
+}
+
+.alc-card:hover .alc-logo2 {
+  color: white;
+}
+
+.alc-card:hover .alc-logo {
+  width: 200px;
+  animation: alc-opacity 1s ease-in-out;
+}
+
+.alc-card:hover .alc-border {
+  inset: 15px;
+  opacity: 1;
+  transform: rotate(0);
+}
+
+.alc-card:hover .alc-bottom-text {
+  letter-spacing: 3px;
+  opacity: 1;
+  transform: translateX(-50%);
+}
+
+.alc-card:hover .alc-content .alc-logo-bottom-text {
+  opacity: 1;
+  letter-spacing: 6px;
+}
+
+.alc-card:hover .alc-trail {
+  animation: alc-trail 1s ease-in-out;
+}
+
+@keyframes alc-opacity {
+  0% {
+    border-right: 1px solid transparent;
+  }
+  10% {
+    border-right: 1px solid var(--alc-accent, #bd9f67);
+  }
+  80% {
+    border-right: 1px solid var(--alc-accent, #bd9f67);
+  }
+  100% {
+    border-right: 1px solid transparent;
+  }
+}
+
+@keyframes alc-trail {
+  0% {
+    background: linear-gradient(90deg, transparent 90%, var(--alc-accent, #bd9f67) 100%);
+    opacity: 0;
+  }
+  30% {
+    background: linear-gradient(90deg, transparent 70%, var(--alc-accent, #bd9f67) 100%);
+    opacity: 1;
+  }
+  70% {
+    background: linear-gradient(90deg, transparent 70%, var(--alc-accent, #bd9f67) 100%);
+    opacity: 1;
+  }
+  95% {
+    background: linear-gradient(90deg, transparent 90%, var(--alc-accent, #bd9f67) 100%);
+    opacity: 0;
+  }
+}
