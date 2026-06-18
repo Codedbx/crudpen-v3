@@ -203,18 +203,25 @@ export default function About() {
 
           <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-square rounded-[16px] overflow-hidden p-1 shadow-[0_0_60px_rgba(108,63,235,0.3)] bg-gradient-to-br from-[#6C3FEB]/30 to-[#9333EA]/15">
             <div className="w-full h-full relative rounded-[14px] overflow-hidden bg-gray-100 flex items-center justify-center">
-              <div className="text-gray-400 font-medium">Image Placeholder</div>
+              <Image 
+                src="/crafty-img1.jpg" 
+                alt="Crafting Digital Excellence" 
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D1A]/60 via-transparent to-transparent pointer-events-none" />
               <motion.div 
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute bottom-6 left-6 right-6 md:right-auto bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(108,63,235,0.15)] rounded-[16px] p-5 flex items-center gap-4 border border-white/50"
+                className="absolute bottom-4 left-4 right-4 sm:right-auto md:bottom-6 md:left-6 bg-white/70 backdrop-blur-xl shadow-[0_8px_32px_rgba(108,63,235,0.15)] rounded-[12px] md:rounded-[16px] p-3 md:p-5 flex items-center gap-3 md:gap-4 border border-white/50"
               >
-                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#6C3FEB] to-[#9333EA] flex items-center justify-center text-white shadow-[0_4px_15px_rgba(108,63,235,0.4)]">
-                  <Award className="h-6 w-6" />
+                <div className="shrink-0 h-10 w-10 md:h-12 md:w-12 rounded-full bg-gradient-to-br from-[#6C3FEB] to-[#9333EA] flex items-center justify-center text-white shadow-[0_4px_15px_rgba(108,63,235,0.4)]">
+                  <Award className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-[#0D0D1A] leading-tight">5 Years Experience</p>
-                  <p className="text-xs text-[#475569] mt-1">10+ Projects</p>
+                <div className="min-w-0">
+                  <p className="text-[13px] md:text-sm font-bold text-[#0D0D1A] leading-tight truncate">5 Years Experience</p>
+                  <p className="text-[11px] md:text-xs text-[#475569] mt-0.5 md:mt-1 truncate">10+ Projects</p>
                 </div>
               </motion.div>
             </div>
@@ -330,9 +337,15 @@ export default function About() {
             </div>
           </div>
 
-          <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[4/5] rounded-[20px] overflow-hidden lg:order-last order-first shadow-[0_20px_60px_rgba(108,63,235,0.15)]">
-            <div className="w-full h-full relative bg-white/60 backdrop-blur-xl border border-white/50 flex items-center justify-center">
-              <div className="text-[#6C3FEB]/40 font-medium">Image Placeholder</div>
+          <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-[4/5] rounded-[20px] overflow-hidden p-1 shadow-[0_20px_60px_rgba(108,63,235,0.15)] bg-gradient-to-br from-[#6C3FEB]/30 to-[#9333EA]/15 lg:order-last order-first">
+            <div className="w-full h-full relative rounded-[18px] overflow-hidden bg-white/60 backdrop-blur-xl border border-white/50 flex items-center justify-center">
+              <Image 
+                src="/office-teamwork-session.jpg" 
+                alt="Startups Digital Solutions" 
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>

@@ -4,10 +4,10 @@ import React from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { 
-  Calendar, 
-  FolderOpen, 
-  TrendingUp, 
-  Users 
+  Trophy, 
+  Layers, 
+  HeartHandshake, 
+  Star 
 } from "lucide-react";
 
 const CountUpAnimation = ({ 
@@ -73,31 +73,27 @@ export const StatsSection = ({
   const statsWithIcons = [
     {
       ...stats[0],
-      icon: Calendar,
-      gradient: "from-[#6C3FEB]/20 via-[#8B5CF6]/10 to-transparent",
-      iconGradient: "from-[#6C3FEB] to-[#8B5CF6]",
-      description: "Building digital products since day one"
+      icon: Trophy,
+      gradient: "from-[#6C3FEB]/20 via-[#9333EA]/10 to-transparent",
+      iconGradient: "from-[#6C3FEB] to-[#9333EA]"
     },
     {
       ...stats[1], 
-      icon: FolderOpen,
-      gradient: "from-[#3B82F6]/20 via-[#6366F1]/10 to-transparent",
-      iconGradient: "from-[#3B82F6] to-[#6366F1]",
-      description: "From startups to enterprise solutions"
+      icon: Layers,
+      gradient: "from-[#8B5CF6]/20 via-[#C084FC]/10 to-transparent",
+      iconGradient: "from-[#8B5CF6] to-[#C084FC]"
     },
     {
       ...stats[2],
-      icon: Users,
-      gradient: "from-[#8B5CF6]/20 via-[#A855F7]/10 to-transparent",
-      iconGradient: "from-[#8B5CF6] to-[#A855F7]",
-      description: "Clients who trust us with their vision"
+      icon: HeartHandshake,
+      gradient: "from-[#3B82F6]/20 via-[#6366F1]/10 to-transparent",
+      iconGradient: "from-[#3B82F6] to-[#6366F1]"
     },
     {
       ...stats[3],
-      icon: TrendingUp,
-      gradient: "from-[#10B981]/20 via-[#059669]/10 to-transparent",
-      iconGradient: "from-[#10B981] to-[#059669]",
-      description: "Because great work speaks for itself"
+      icon: Star,
+      gradient: "from-[#D946EF]/20 via-[#9333EA]/10 to-transparent",
+      iconGradient: "from-[#D946EF] to-[#9333EA]"
     }
   ];
 
@@ -133,7 +129,7 @@ export const StatsSection = ({
             style={{ transformStyle: "preserve-3d" }}
           >
             {/* Glassmorphism Card */}
-            <div className="relative p-6 rounded-[28px] backdrop-blur-2xl bg-white/[0.03] border border-white/[0.08] overflow-hidden transition-all duration-700 group-hover:border-white/[0.15] group-hover:bg-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.12)] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]">
+            <div className="relative p-6 rounded-[28px] backdrop-blur-[40px] bg-white/[0.05] border border-white/[0.1] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.2)] overflow-hidden transition-all duration-700 group-hover:border-white/[0.2] group-hover:bg-white/[0.08] group-hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_20px_40px_rgba(0,0,0,0.3)]">
               
               {/* Animated Background Blob */}
               <motion.div 
@@ -192,7 +188,7 @@ export const StatsSection = ({
               <div className="absolute inset-[1px] rounded-[31px] bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none" />
               
               {/* Content Container */}
-              <div className="relative flex items-start gap-5">
+              <div className="relative flex items-center gap-5">
                 {/* Icon Container with 3D Effect */}
                 <motion.div
                   whileHover={{ 
@@ -273,22 +269,9 @@ export const StatsSection = ({
                       stiffness: 120
                     }}
                   >
-                    <h4 className="text-sm font-bold text-white/90 uppercase tracking-[0.15em] mb-3 leading-tight">
-                      {stat.label.replace(/^\d+\+?\s*/, '')}
+                    <h4 className="text-sm font-bold text-white/90 uppercase tracking-[0.15em] mb-1 leading-tight mt-1">
+                      {stat.label.replace(/^\d+[\+%]?\s*/, '')}
                     </h4>
-                    
-                    {/* Description with Fade Animation */}
-                    <motion.p 
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ 
-                        delay: index * 0.2 + 1,
-                        duration: 0.5
-                      }}
-                      className="text-sm text-white/60 leading-relaxed group-hover:text-white/80 transition-colors duration-300"
-                    >
-                      {stat.description}
-                    </motion.p>
                   </motion.div>
                 </div>
               </div>
